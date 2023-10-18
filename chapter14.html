@@ -24,7 +24,24 @@
     <p data-classified="unclassified">I have two feet.</p>  
     <p><a href=".">Normal link</a></p>
     <p><a href="." style="color: green">Green link</a></p>   
+    <p style="text-align: center">
+        <img src="img/cat.png" style="position: relative">
+    </p>
 </body>
+
+<script>
+    let cat = document.querySelector("img");
+    let angle = Math.PI / 2;
+        function animate(time, lastTime) {
+            if (lastTime != null) {
+            angle += (time - lastTime) * 0.001;
+        }
+        cat.style.top = (Math.sin(angle) * 20) + "px";
+        cat.style.left = (Math.cos(angle) * 200) + "px";
+        requestAnimationFrame(newTime => animate(newTime, time));
+    }
+    requestAnimationFrame(animate);
+</script>
 <script>
     let paragraphs = document.body.getElementsByTagName("p");
     document.body.insertBefore(paragraphs[2], paragraphs[0]);
