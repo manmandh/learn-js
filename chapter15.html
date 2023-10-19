@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Click this document to activate the handler.</p>
+    <button>Click me</button>
+    <p>No handler here.</p>
+    <button>Click me any way you want</button>
+    <p>A paragraph with a <button>button</button>.</p>
+</body>
+<script>
+    let button = document.querySelector("button");
+    button.addEventListener("click", () => {
+    console.log("Button clicked.");
+    });
+</script>
+<script>
+    window.addEventListener("click", () => {
+    console.log("You knocked?");
+    });
+</script>
+
+<script>
+    let button2 = document.querySelector("button2");
+    button2.addEventListener("mousedown", event => {
+    if (event.button == 0) {
+    console.log("Left button");
+    } else if (event.button2 == 1) {
+    console.log("Middle button");
+    } else if (event.button2 == 2) {
+    console.log("Right button");
+    }
+    });
+</script>
+
+
+<script>
+    let para = document.querySelector("p");
+    let button3 = document.querySelector("button3");
+    para.addEventListener("mousedown", () => {
+    console.log("Handler for paragraph.");
+    });
+    button3.addEventListener("mousedown", event => {
+    console.log("Handler for button.");
+    if (event.button3 == 2) event.stopPropagation();
+    });
+</script>
+
+<script>
+    window.addEventListener("keydown", event => {
+    if (event.key == "v") {
+    document.body.style.background = "violet";
+    }
+    });
+    window.addEventListener("keyup", event => {
+    if (event.key == "v") {
+    document.body.style.background = "";
+    }
+    });
+</script>
+</html>
+
