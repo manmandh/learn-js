@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Before canvas.</p>
+    <canvas width="120" height="60"></canvas>
+    <p>After canvas.</p>
+
+</body>
+</html>
+
+<script>
+    let canvas = document.querySelector("canvas");
+    let context = canvas.getContext("2d");
+    context.fillStyle = "red";
+    context.fillRect(10, 10, 100, 50);
+</script>
+
+<script>
+    let cx = document.querySelector("canvas").getContext("2d");
+    cx.strokeStyle = "blue";
+    cx.strokeRect(5, 5, 50, 50);
+    cx.lineWidth = 5;
+    cx.strokeRect(135, 5, 50, 50);
+</script>
+
+<script>
+    let cx = document.querySelector("canvas").getContext("2d");
+    cx.beginPath();
+    for (let y = 10; y < 100; y += 10) {
+    cx.moveTo(10, y);
+    cx.lineTo(90, y);
+    }
+    cx.stroke();
+</script>
+
+<script>
+    let cx = document.querySelector("canvas").getContext("2d");
+    cx.beginPath();
+    cx.moveTo(10, 90);
+    // control=(60,10) goal=(90,90)
+    cx.quadraticCurveTo(60, 10, 90, 90);
+    cx.lineTo(60, 10);
+    cx.closePath();
+    cx.stroke();
+</script>
+
+<script>
+    let cx = document.querySelector("canvas").getContext("2d");
+    cx.beginPath();
+    cx.moveTo(10, 90);
+    // control1=(10,10) control2=(90,10) goal=(50,90)
+    cx.bezierCurveTo(10, 10, 90, 10, 50, 90);
+    cx.lineTo(90, 10);
+    cx.lineTo(10, 10);
+    cx.closePath();
+    cx.stroke();
+</script>
+
+
+<script>
+    let cx = document.querySelector("canvas").getContext("2d");
+    let total = results
+    .reduce((sum, {count}) => sum + count, 0);
+    // Start at the top
+    let currentAngle = -0.5 * Math.PI;
+    for (let result of results) {
+    let sliceAngle = (result.count / total) * 2 * Math.PI;
+    cx.beginPath();
+    // center=100,100, radius=100
+    // from current angle, clockwise by slice's angle
+    cx.arc(100, 100, 100,
+    currentAngle, currentAngle + sliceAngle);
+    currentAngle += sliceAngle;
+    cx.lineTo(100, 100);
+    cx.fillStyle = result.color;
+    cx.fill();
+    }
+</script>
+
+<script>
+    let cx = document.querySelector("canvas").getContext("2d");
+    let img = document.createElement("img");
+    img.src = "img/hat.png";
+    img.addEventListener("load", () => {
+    for (let x = 10; x < 200; x += 30) {
+    cx.drawImage(img, x, 10);
+    }
+    });
+</script>
