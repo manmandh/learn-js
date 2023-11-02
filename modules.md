@@ -1,4 +1,4 @@
-#Modules trong JS
+# Modules trong JS
 
 > Tổ chức các module thành cád file riêng rẽ độc lập để dễ dành tái sử dụng và quản lý, có 2 cách để thao tác với modules
 
